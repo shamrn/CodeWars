@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../skillbox/dz/Bot/.idea/Bot.iml" filepath="$PROJECT_DIR$/../skillbox/dz/Bot/.idea/Bot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Codewars.iml" filepath="$PROJECT_DIR$/.idea/Codewars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Stepik/.idea/Stepik.iml" filepath="$PROJECT_DIR$/../Stepik/.idea/Stepik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../help/.idea/help.iml" filepath="$PROJECT_DIR$/../help/.idea/help.iml" />
+    </modules>
+  </component>
+</project>
