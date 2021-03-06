@@ -1,79 +1,20 @@
-def filter_list(list):
-    return [x for x in list if type(x) == int]
-
-f = filter_list([1,2,'a','b',2,111,'234234','s'])
-print(f)
-
-
-def get_count(inputStr):
-    return len([x for x in inputStr if x in ('iIeEOoAauU')])
-    # your code here
-
-f = get_count('afdsdbnqwfosdifasbvqefsadgas')
-print(f)
+#TACK
+#In this kata you have to create all permutations of an input string and remove duplicates, if present.
+# This means, you have to shuffle all letters from the input in all possible orders.
+import random as ra
 
 
+def permutations(string):
+    result = []
+    for _ in range(len(string) * 20):
+        per = ra.sample(string,len(string))
+        per = ''.join(per)
+        if per not in result:
+            result.append(per)
 
-def accum(s):
-    return '-'.join(c.upper() + c.lower() * i for i,c in enumerate(s))
+   # list = ['{}{}{}{}'.format(string[indx] for indx in rand_indx)]
 
-print(accum('ZpglnRxqenU'))
+    return result
 
-
-
-def high(x):
-    alpha = 'abcdefghijklmnopqrstuvwxyz'
-    dict_alpha = {x:alpha.index(x) +1 for x in alpha}
-    sum = 0
-    result = ''
-    result_dict = {}
-    for text in x+' ':
-        if text != ' ':
-            sum += dict_alpha[text]
-            result +=  text
-        else:
-            result_dict[result] = sum
-            result  +=  ' '
-            sum = 0
-            result = ''
-    return (list(result_dict.keys())[list(result_dict.values()).index(max(result_dict.values()))])
-
-
-print(high('what time are we climbing up the volcano'))
-
-
-def create_phone_number(n):
-    return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
-print(create_phone_number([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
-
-def solution(s):
-    return [s[i]+'_' if len(s[i:]) == 1 else s[i:i+2]
-            for i in range(0, len(s), 2)]
-
-
-print(solution('abc'))
-print(solution('abcdef'))
-
-def solution(s):
-    return ''.join(' ' + l if l.upper() == l else l for l in s)
-
-print(solution('breakCamelCase'))
-
-
-def find_uniq(arr):
-    result = {}
-    for num in arr:
-        if num in result:
-            result[num] += 1
-        else:
-            result[num] = 1
-
-    result = sorted(result.items(),key=lambda row:row[1],reverse=True)
-    return result[-1][0]
-print(find_uniq([ 1, 1, 1, 2, 1, 1 ]))
-
-def find_uniq(arr):
-    a, b = set(arr)
-    return a if arr.count(a) == 1 else b
-
-print(find_uniq([ 1, 1, 1, 2, 1, 1 ]))
+permutations('aabb')
+print(permutations(['bgcukzyv', 'bgcvzuyk', 'bgukyvzc', 'bgvukcyz', 'bkuzcygv', 'bkvugyzc', 'bkvzyguc', 'bucvgykz', 'bucyvzgk', 'bvkgzycu', 'bvukygcz', 'bvyuzcgk', 'byzkuvcg', 'bzyvcguk', 'cbgvzkuy', 'cbkzguvy', 'cbyvkgzu', 'cgbkuyvz', 'cuzvgkby', 'cvbkugzy', 'cvgbuykz', 'cvgyzkub', 'cygvbuzk', 'cykguvbz', 'cyuvzkgb', 'czukbyvg', 'czvgbuky', 'czykgubv', 'gbcyvuzk', 'gbuvykzc', 'gbzkucyv', 'gbzkuvcy', 'gbzuckyv', 'gbzvuyck', 'gckuzybv', 'gcvbzuyk', 'gcyvzbku', 'gkbzuycv', 'gubvzcky', 'guckvybz', 'gukcbvyz', 'gukcbzyv', 'gukvzcyb', 'gukyvczb', 'guybkzvc', 'guzcvkby', 'gvbkcyuz', 'gybcvuzk', 'gykvzbuc', 'gyzvbcuk', 'gzcuvbky', 'gzcuvbyk', 'gzcvubyk', 'gzkcuyvb', 'gzvkybuc', 'kbczyvug', 'kbvzgycu', 'kcbzgyuv', 'kcuzvgby', 'kcvgzyub', 'kczgubvy', 'kgbuzvyc', 'kgbzvcuy', 'kguycvzb', 'kgzuvcby', 'kubygcvz', 'kubzvgcy', 'kuvbczyg', 'kuvgbczy', 'kuvzygcb', 'kuyvgzbc', 'kuzgcbvy', 'kvgczybu', 'kvybzcug', 'kycbvuzg', 'kyucgzvb', 'kyvzgcbu', 'kyzbcuvg', 'kyzcgbuv', 'kzbgvcyu', 'kzvycubg', 'kzybugcv', 'ubvgckzy', 'ubvgzcky', 'ubykgczv', 'ubykzcvg', 'ugkbcvzy', 'ugkyzcbv', 'ugyvcbzk', 'ukbygzcv', 'ukvgbzyc', 'ukvybzgc', 'ukygcvzb', 'uvcbzygk', 'uvzgbcyk', 'uvzygcbk', 'uybzkcvg', 'uykbzgcv', 'uyzckvgb', 'uzgykbcv', 'uzkgbyvc', 'uzybcvgk', 'vbkygczu', 'vbucygkz', 'vbykgzcu', 'vbzkyugc', 'vbzyugck', 'vcgbzyku', 'vckzgybu', 'vcybukzg', 'vgcbukzy', 'vgkyzubc', 'vgzycubk', 'vkbucgzy', 'vuygckbz', 'vykcgzbu', 'vyucbgzk', 'vzcbkguy', 'vzgkcbuy', 'vzkgbcuy', 'vzybgukc', 'ybcugzkv', 'ybgczvuk', 'ybguckvz', 'ybkzuvcg', 'ycbkuzvg', 'ygbkzvcu', 'ygckvuzb', 'ykcgvuzb', 'ykgbzucv', 'ykubvzcg', 'ykzbvcug', 'yukzbvgc', 'yvcgubkz', 'yvgbuczk', 'yvuzgcbk', 'yzbkvgcu', 'yzbuvkgc', 'yzbvgkcu', 'yzcuvbgk', 'yzguvbkc', 'zbckyvgu', 'zbykvucg', 'zcbgvuyk', 'zckguyvb', 'zgcbyukv', 'zgkcbyvu', 'zgvbuyck', 'zgykucvb', 'zkucvgby', 'zkvgbyuc', 'zvykucbg', 'zybkvugc', 'zycgbkuv', 'zygvbcku', 'zyukgbcv', 'zyvbcukg', 'zyvguckb','bcgkuvyz', 'bcgkuvzy', 'bcgkuyvz', 'bcgkuyzv', 'bcgkuzvy', 'bcgkuzyv', 'bcgkvuyz', 'bcgkvuzy', 'bcgkvyuz', 'bcgkvyzu', 'bcgkvzuy', 'bcgkvzyu', 'bcgkyuvz', 'bcgkyuzv', 'bcgkyvuz', 'bcgkyvzu', 'bcgkyzuv', 'bcgkyzvu', 'bcgkzuvy', 'bcgkzuyv', 'bcgkzvuy', 'bcgkzvyu', 'bcgkzyuv', 'bcgkzyvu', 'bcgukvyz', 'bcgukvzy', 'bcgukyvz', 'bcgukyzv', 'bcgukzvy', 'bcgukzyv', 'bcguvkyz', 'bcguvkzy', 'bcguvykz', 'bcguvyzk', 'bcguvzky', 'bcguvzyk', 'bcguykvz', 'bcguykzv', 'bcguyvkz', 'bcguyvzk', 'bcguyzkv', 'bcguyzvk', 'bcguzkvy', 'bcguzkyv', 'bcguzvky', 'bcguzvyk', 'bcguzykv', 'bcguzyvk', 'bcgvkuyz', 'bcgvkuzy', 'bcgvkyuz', 'bcgvkyzu', 'bcgvkzuy', 'bcgvkzyu', 'bcgvukyz', 'bcgvukzy', 'bcgvuykz', 'bcgvuyzk', 'bcgvuzky', 'bcgvuzyk', 'bcgvykuz', 'bcgvykzu', 'bcgvyukz', 'bcgvyuzk', 'bcgvyzku', 'bcgvyzuk', 'bcgvzkuy', 'bcgvzkyu', 'bcgvzuky', 'bcgvzuyk', 'bcgvzyku', 'bcgvzyuk', 'bcgykuvz', 'bcgykuzv', 'bcgykvuz', 'bcgykvzu', 'bcgykzuv', 'bcgykzvu', 'bcgyukvz', 'bcgyukzv', 'bcgyuvkz', 'bcgyuvzk', 'bcgyuzkv', 'bcgyuzvk', 'bcgyvkuz', 'bcgyvkzu', 'bcgyvukz', 'bcgyvuzk', 'bcgyvzku', 'bcgyvzuk', 'bcgyzkuv', 'bcgyzkvu', 'bcgyzukv', 'bcgyzuvk', 'bcgyzvku', 'bcgyzvuk', 'bcgzkuvy', 'bcgzkuyv', 'bcgzkvuy', 'bcgzkvyu', 'bcgzkyuv', 'bcgzkyvu', 'bcgzukvy', 'bcgzukyv', 'bcgzuvky', 'bcgzuvyk', 'bcgzuykv', 'bcgzuyvk', 'bcgzvkuy', 'bcgzvkyu', 'bcgzvuky', 'bcgzvuyk', 'bcgzvyku', 'bcgzvyuk', 'bcgzykuv', 'bcgzykvu', 'bcgzyukv', 'bcgzyuvk', 'bcgzyvku', 'bcgzyvuk', 'bckguvyz', 'bckguvzy', 'bckguyvz', 'bckguyzv', 'bckguzvy', 'bckguzyv', 'bckgvuyz', 'bckgvuzy', 'bckgvyuz', 'bckgvyzu', 'bckgvzuy', 'bckgvzyu', 'bckgyuvz', 'bckgyuzv', 'bckgyvuz', 'bckgyvzu', 'bckgyzuv', 'bckgyzvu', 'bckgzuvy', 'bckgzuyv', 'bckgzvuy', 'bckgzvyu', 'bckgzyuv', 'bckgzyvu', 'bckugvyz', 'bckugvzy', 'bckugyvz', 'bckugyzv', 'bckugzvy', 'bckugzyv', 'bckuvgyz', 'bckuvgzy', 'bckuvygz', 'bckuvyzg', 'bckuvzgy', 'bckuvzyg', 'bckuygvz', 'bckuygzv', 'bckuyvgz', 'bckuyvzg', 'bckuyzgv', 'bckuyzvg', 'bckuzgvy', 'bckuzgyv', 'bckuzvgy', 'bckuzvyg', 'bckuzygv', 'bckuzyvg', 'bckvguyz', 'bckvguzy', 'bckvgyuz', 'bckvgyzu', 'bckvgzuy', 'bckvgzyu', 'bckvugyz', 'bckvugzy', 'bckvuygz', 'bckvuyzg', 'bckvuzgy', 'bckvuzyg', 'bckvyguz', 'bckvygzu', 'bckvyugz', 'bckvyuzg', 'bckvyzgu', 'bckvyzug', 'bckvzguy', 'bckvzgyu', 'bckvzugy', 'bckvzuyg', 'bckvzygu', 'bckvzyug', 'bckyguvz', 'bckyguzv', 'bckygvuz', 'bckygvzu', 'bckygzuv', 'bckygzvu', 'bckyugvz', 'bckyugzv', 'bckyuvgz', 'bckyuvzg', 'bckyuzgv', 'bckyuzvg', 'bckyvguz', 'bckyvgzu', 'bckyvugz', 'bckyvuzg', 'bckyvzgu', 'bckyvzug', 'bckyzguv', 'bckyzgvu', 'bckyzugv', 'bckyzuvg', 'bckyzvgu', 'bckyzvug', 'bckzguvy', 'bckzguyv', 'bckzgvuy', 'bckzgvyu', 'bckzgyuv', 'bckzgyvu', 'bckzugvy', 'bckzugyv', 'bckzuvgy', 'bckzuvyg', 'bckzuygv', 'bckzuyvg', 'bckzvguy', 'bckzvgyu', 'bckzvugy', 'bckzvuyg', 'bckzvygu', 'bckzvyug', 'bckzyguv', 'bckzygvu', 'bckzyugv', 'bckzyuvg', 'bckzyvgu', 'bckzyvug', 'bcugkvyz', 'bcugkvzy', 'bcugkyvz', 'bcugkyzv', 'bcugkzvy', 'bcugkzyv', 'bcugvkyz', 'bcugvkzy', 'bcugvykz', 'bcugvyzk', 'bcugvzky', 'bcugvzyk', 'bcugykvz', 'bcugykzv', 'bcugyvkz', 'bcugyvzk', 'bcugyzkv', 'bcugyzvk', 'bcugzkvy', 'bcugzkyv', 'bcugzvky', 'bcugzvyk', 'bcugzykv', 'bcugzyvk', 'bcukgvyz', 'bcukgvzy', 'bcukgyvz', 'bcukgyzv', 'bcukgzvy', 'bcukgzyv', 'bcukvgyz', 'bcukvgzy', 'bcukvygz', 'bcukvyzg', 'bcukvzgy', 'bcukvzyg', 'bcukygvz', 'bcukygzv', 'bcukyvgz', 'bcukyvzg', 'bcukyzgv', 'bcukyzvg', 'bcukzgvy', 'bcukzgyv', 'bcukzvgy', 'bcukzvyg', 'bcukzygv', 'bcukzyvg', 'bcuvgkyz', 'bcuvgkzy', 'bcuvgykz', 'bcuvgyzk', 'bcuvgzky', 'bcuvgzyk', 'bcuvkgyz', 'bcuvkgzy', 'bcuvkygz', 'bcuvkyzg', 'bcuvkzgy', 'bcuvkzyg', 'bcuvygkz', 'bcuvygzk', 'bcuvykgz', 'bcuvykzg', 'bcuvyzgk', 'bcuvyzkg', 'bcuvzgky', 'bcuvzgyk', 'bcuvzkgy', 'bcuvzkyg', 'bcuvzygk', 'bcuvzykg', 'bcuygkvz', 'bcuygkzv', 'bcuygvkz', 'bcuygvzk', 'bcuygzkv', 'bcuygzvk', 'bcuykgvz', 'bcuykgzv', 'bcuykvgz', 'bcuykvzg', 'bcuykzgv', 'bcuykzvg', 'bcuyvgkz', 'bcuyvgzk', 'bcuyvkgz', 'bcuyvkzg', 'bcuyvzgk', 'bcuyvzkg', 'bcuyzgkv', 'bcuyzgvk', 'bcuyzkgv', 'bcuyzkvg', 'bcuyzvgk', 'bcuyzvkg', 'bcuzgkvy', 'bcuzgkyv', 'bcuzgvky', 'bcuzgvyk', 'bcuzgykv', 'bcuzgyvk', 'bcuzkgvy', 'bcuzkgyv', 'bcuzkvgy', 'bcuzkvyg', 'bcuzkygv', 'bcuzkyvg', 'bcuzvgky', 'bcuzvgyk', 'bcuzvkgy', 'bcuzvkyg', 'bcuzvygk', 'bcuzvykg', 'bcuzygkv', 'bcuzygvk', 'bcuzykgv', 'bcuzykvg', 'bcuzyvgk', 'bcuzyvkg', 'bcvgkuyz', 'bcvgkuzy', 'bcvgkyuz', 'bcvgkyzu', 'bcvgkzuy', 'bcvgkzyu', 'bcvgukyz', 'bcvgukzy', 'bcvguykz', 'bcvguyzk', 'bcvguzky', 'bcvguzyk', 'bcvgykuz', 'bcvgykzu', 'bcvgyukz', 'bcvgyuzk', 'bcvgyzku', 'bcvgyzuk', 'bcvgzkuy', 'bcvgzkyu', 'bcvgzuky', 'bcvgzuyk', 'bcvgzyku', 'bcvgzyuk', 'bcvkguyz', 'bcvkguzy', 'bcvkgyuz', 'bcvkgyzu', 'bcvkgzuy', 'bcvkgzyu', 'bcvkugyz', 'bcvkugzy', 'bcvkuygz', 'bcvkuyzg', 'bcvkuzgy', 'bcvkuzyg', 'bcvkyguz', 'bcvkygzu', 'bcvkyugz', 'bcvkyuzg', 'bcvkyzgu', 'bcvkyzug', 'bcvkzguy', 'bcvkzgyu', 'bcvkzugy', 'bcvkzuyg', 'bcvkzygu', 'bcvkzyug', 'bcvugkyz', 'bcvugkzy', 'bcvugykz', 'bcvugyzk', 'bcvugzky', 'bcvugzyk', 'bcvukgyz', 'bcvukgzy', 'bcvukygz', 'bcvukyzg', 'bcvukzgy', 'bcvukzyg', 'bcvuygkz', 'bcvuygzk', 'bcvuykgz', 'bcvuykzg', 'bcvuyzgk', 'bcvuyzkg', 'bcvuzgky', 'bcvuzgyk', 'bcvuzkgy', 'bcvuzkyg', 'bcvuzygk', 'bcvuzykg', 'bcvygkuz', 'bcvygkzu', 'bcvygukz', 'bcvyguzk', 'bcvygzku', 'bcvygzuk', 'bcvykguz', 'bcvykgzu', 'bcvykugz', 'bcvykuzg', 'bcvykzgu', 'bcvykzug', 'bcvyugkz', 'bcvyugzk', 'bcvyukgz', 'bcvyukzg', 'bcvyuzgk', 'bcvyuzkg', 'bcvyzgku', 'bcvyzguk', 'bcvyzkgu', 'bcvyzkug', 'bcvyzugk', 'bcvyzukg', 'bcvzgkuy', 'bcvzgkyu', 'bcvzguky', 'bcvzguyk', 'bcvzgyku', 'bcvzgyuk', 'bcvzkguy', 'bcvzkgyu', 'bcvzkugy', 'bcvzkuyg', 'bcvzkygu', 'bcvzkyug', 'bcvzugky', 'bcvzugyk', 'bcvzukgy', 'bcvzukyg', 'bcvzuygk', 'bcvzuykg', 'bcvzygku', 'bcvzyguk', 'bcvzykgu', 'bcvzykug', 'bcvzyugk', 'bcvzyukg', 'bcygkuvz', 'bcygkuzv', 'bcygkvuz', 'bcygkvzu', 'bcygkzuv', 'bcygkzvu', 'bcygukvz', 'bcygukzv', 'bcyguvkz' ]))
