@@ -1,79 +1,48 @@
-def filter_list(list):
-    return [x for x in list if type(x) == int]
+#TASK In this example you have to validate if a user input string is alphanumeric. The given string is not nil/null/NULL/None, so you don't have to check that.
+def alphanumeric(password):
+    x = True if password.isalnum() else False
+    return x
 
-f = filter_list([1,2,'a','b',2,111,'234234','s'])
-print(f)
+print(alphanumeric('Hello123'))
+print(alphanumeric('Hello_123'))
 
+#TASK сортировка пузырьком
 
-def get_count(inputStr):
-    return len([x for x in inputStr if x in ('iIeEOoAauU')])
-    # your code here
+def bubble_sort(n):
+    for i in range(len(n) - 1):
+        for j in range(len(n)-i-1):
+            if n[j] > n[j +1]: n[j] , n[j +1] = n[j +1],n[j]
+    return n
 
-f = get_count('afdsdbnqwfosdifasbvqefsadgas')
-print(f)
-
-
-
-def accum(s):
-    return '-'.join(c.upper() + c.lower() * i for i,c in enumerate(s))
-
-print(accum('ZpglnRxqenU'))
+print(bubble_sort([2,3,4,1,2,2,3,3,2342,23423,1,4,5,9,1,2,3,4]))
 
 
-
-def high(x):
-    alpha = 'abcdefghijklmnopqrstuvwxyz'
-    dict_alpha = {x:alpha.index(x) +1 for x in alpha}
-    sum = 0
-    result = ''
-    result_dict = {}
-    for text in x+' ':
-        if text != ' ':
-            sum += dict_alpha[text]
-            result +=  text
-        else:
-            result_dict[result] = sum
-            result  +=  ' '
-            sum = 0
-            result = ''
-    return (list(result_dict.keys())[list(result_dict.values()).index(max(result_dict.values()))])
+#TASK Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
 
 
-print(high('what time are we climbing up the volcano'))
+def domain_name(url):        #????????????????????????
+    import re
+    res = re.findall(r'https?://(?:www\.|)([\w.-]+).*',url)
+    return res
+
+print(domain_name("http://google.com"))
 
 
-def create_phone_number(n):
-    return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
-print(create_phone_number([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
 
-def solution(s):
-    return [s[i]+'_' if len(s[i:]) == 1 else s[i:i+2]
-            for i in range(0, len(s), 2)]
-
-
-print(solution('abc'))
-print(solution('abcdef'))
-
-def solution(s):
-    return ''.join(' ' + l if l.upper() == l else l for l in s)
-
-print(solution('breakCamelCase'))
+#TASK
+# "one" => 1
+# "twenty" => 20
+# "two hundred forty-six" => 246
+# "seven hundred eighty-three thousand nine hundred and nineteen" => 783919
 
 
-def find_uniq(arr):
-    result = {}
-    for num in arr:
-        if num in result:
-            result[num] += 1
-        else:
-            result[num] = 1
+def parse_int(string): #???
+    num_string = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+                "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15, "sixteen": 16,
+                "seventeen": 17, "eigthteen": 18, "nineteen": 19,"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+                  "sixty": 60, "seventy": 70, "eighty": 80,"ninety": 90,"hundred": 100, "thousand": 1000, "million": 1000000}
 
-    result = sorted(result.items(),key=lambda row:row[1],reverse=True)
-    return result[-1][0]
-print(find_uniq([ 1, 1, 1, 2, 1, 1 ]))
+    for let in string.split():
+        print(num_string[let])
 
-def find_uniq(arr):
-    a, b = set(arr)
-    return a if arr.count(a) == 1 else b
-
-print(find_uniq([ 1, 1, 1, 2, 1, 1 ]))
+print(parse_int('two hundred forty-six'))
